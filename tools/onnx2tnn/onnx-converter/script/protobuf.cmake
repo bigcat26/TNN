@@ -24,7 +24,7 @@ if(PROTOBUF_FOUND)
     file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/proto)
     add_custom_command(
         OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/proto/onnx.pb.h ${CMAKE_CURRENT_BINARY_DIR}/proto/onnx.pb.cc
-        COMMAND protobuf::protoc --cpp_out=${CMAKE_CURRENT_BINARY_DIR}/proto ${ONNX_PROTO} -I ${CMAKE_SOURCE_DIR}/../src/onnx-proto)
+        COMMAND ${Protobuf_PROTOC_EXECUTABLE} --cpp_out=${CMAKE_CURRENT_BINARY_DIR}/proto ${ONNX_PROTO} -I ${CMAKE_SOURCE_DIR}/../src/onnx-proto)
     set(ONNX_PROTO_HEAD ${CMAKE_BINARY_DIR}/proto/onnx.pb.h)
     set(ONNX_PROTO_SRC  ${CMAKE_BINARY_DIR}/proto/onnx.pb.cc)
     include_directories(${CMAKE_BINARY_DIR}/proto)
